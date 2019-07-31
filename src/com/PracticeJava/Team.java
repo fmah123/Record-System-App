@@ -26,6 +26,7 @@ public class Team implements Serializable {
         return teamName;
     }
 
+    //This adds team members to the team list object.
     public boolean addTeamMembers(Employee employee){
         if(employee!=null){
             team.add(employee);
@@ -34,10 +35,12 @@ public class Team implements Serializable {
         return false;
     }
 
+
     public int findEmployee(Employee employee){
         return this.team.indexOf(employee);
     }
 
+    //This method will find the employee object with another method on line 39 being used to simplyfy this method for readability.
     public Employee getEmployee(Employee employee){
         int index = findEmployee(employee);
         if(index >= 0){
@@ -46,6 +49,7 @@ public class Team implements Serializable {
         return null;
     }
 
+    //The toString() method will print out all record details like team name and members of the team.
     @Override
     public String toString() {
         String employeeString = "";

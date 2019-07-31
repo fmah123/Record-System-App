@@ -62,7 +62,7 @@ public final class Records {
         return null;
     }
 
-    //adds developement manager object to the managers list
+    //adds development manager object
     public boolean addDevManager(DevelopementManager manager){
         if(manager != null){
             manager.getManager().add(manager);
@@ -84,7 +84,7 @@ public final class Records {
         return controller.RecordTeam(team);
     }
 
-    //This method saes
+    //This method saves the team objects and the contained employee objects.
     public boolean SaveRecords() {
         try (ObjectOutputStream file = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("records.dat")))){
             for(Team team : controller.getRecordTeam().values()){
@@ -98,6 +98,7 @@ public final class Records {
         return false;
     }
 
+    //This method uploads the employee object from file stored on disk.
     public void uploadRecords() {
         try (ObjectInputStream file = new ObjectInputStream(new BufferedInputStream(new FileInputStream("records.dat")))) {
             boolean eof = false;
@@ -118,6 +119,7 @@ public final class Records {
         }
     }
 
+    //This inner class is used to abstract methods used to implement different actions of the program.
     private class RecordController{
         private Map<String, Team> recordTeam;
 
@@ -125,11 +127,10 @@ public final class Records {
             this.recordTeam = new HashMap<>();
         }
 
+        //This prevents any user from modifying contents of the map like changing team objects.
         private Map<String, Team> getRecordTeam() {
             return Collections.unmodifiableMap(recordTeam);
         }
-
-        //get method for manager object.
 
         private boolean RecordEmployee(Team team, Employee employee){
             if(employee != null){

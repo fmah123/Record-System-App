@@ -10,6 +10,8 @@ public abstract class Employee implements Serializable{
 
     public Employee(String name, EmployeeType type) {
         this.name = name;
+
+        //This is used to distinguish different types.
         if(type.toString().toLowerCase().equals("developer") ){
             this.position = "Developer";
         }else if(type.toString().toLowerCase().equals("tester")){
@@ -19,6 +21,7 @@ public abstract class Employee implements Serializable{
         }
     }
 
+    //This is enumerated data type is used to classify different employee types from the developer to the tester.
     public enum EmployeeType{
         DEVELOPER,
         TESTER,
@@ -30,7 +33,8 @@ public abstract class Employee implements Serializable{
     public String getName() {
         return name;
     }
-    
+
+
     @Override
     public String toString() {
         return "Employee name: " + name + "\nPosition: " + position;
