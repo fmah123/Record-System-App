@@ -3,6 +3,9 @@ package com.PracticeJava;
 import java.io.Serializable;
 
 public class Manager extends Employee implements Serializable{
+
+    //Class no longer in use
+
     private String name;
 
     public Manager(String name) {

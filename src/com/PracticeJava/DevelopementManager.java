@@ -18,10 +18,6 @@ public final class DevelopementManager extends Employee implements Management, S
         } else{
             this.manager = new ArrayList<>();
         }
-
-//        if(count < 1){
-//            count++;
-//        }
     }
 
     public List<DevelopementManager> getManager() {

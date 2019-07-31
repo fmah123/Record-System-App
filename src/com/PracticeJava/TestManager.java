@@ -8,11 +8,10 @@ import java.util.ListIterator;
 
 public final class TestManager extends Employee implements Management, Serializable {
 
-    //private static int count = 0;
     private static List<TestManager> manager;
     private int experience;
 
-
+    //Constructor sets the manager field variable with a new linked list or passes a existing linked list
     public TestManager(String name, int experienceInMonths) {
         super(name, EmployeeType.TEST_MANAGER);
         this.experience = experienceInMonths;
@@ -21,14 +20,8 @@ public final class TestManager extends Employee implements Management, Serializa
         }else {
             this.manager = new LinkedList<>();
         }
-
-
-//        if(count < 1){
-//            count++;
-//        } else {
-//            System.out.println("No more than two test managers.");
-//        }
     }
+
 
     public List<TestManager> getManager() {
         return manager;

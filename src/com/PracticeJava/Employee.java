@@ -30,11 +30,7 @@ public abstract class Employee implements Serializable{
     public String getName() {
         return name;
     }
-
-    public String getPosition() {
-        return position;
-    }
-
+    
     @Override
     public String toString() {
         return "Employee name: " + name + "\nPosition: " + position;

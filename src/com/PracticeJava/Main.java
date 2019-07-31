@@ -8,10 +8,11 @@ import java.util.concurrent.Executors;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-    private static Records records = Records.getInstance(); //Records.getSingleInstance(); //new Records();
+    private static Records records = Records.getInstance();
 
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(1);
+
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -21,6 +22,8 @@ public class Main {
                 printActions();
 
                 boolean quit = false;
+
+                //This indefinite while loop is the controller of the application.
                 while (!quit) {
                     try {
                         System.out.println("Enter actions: ");
@@ -66,6 +69,9 @@ public class Main {
 
     }
 
+    //This method provides a nice console output and allows users to input employee information such as name,
+    // position known as type, team name employee belongs, as well as the months XP for managers.
+    // .
     private static void addEmployee() {
         Employee employee;
         String experience = "0";
@@ -148,6 +154,7 @@ public class Main {
     }
 
 
+    //Adds team to the record.
     private static void addTeam() {
         Team team;
         try {
@@ -163,6 +170,7 @@ public class Main {
     }
 
 
+    //Prints the options list.
     private static void printActions() {
         System.out.println("Select from the following options: \n" +
                 "0 - to quit records app\n" +
@@ -174,6 +182,7 @@ public class Main {
                 "6 - to get managers list.");
     }
 
+    //Indicates if a record has been recorded successfully
     private static void RecordsToFile() {
         if (records.SaveRecords()) {
             System.out.println("Records saved successfully.");
@@ -182,11 +191,13 @@ public class Main {
         }
     }
 
+    // Uploads records from file.
     private static void RecordsFromFile() {
         records.uploadRecords();
     }
 
 
+    //gets the managers list from record.
     private static void getManagersList(){
         TestManager manager = new TestManager("name", 12);
         DevelopementManager manager1 = new DevelopementManager("name", 12);

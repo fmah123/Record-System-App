@@ -7,26 +7,21 @@ import java.util.*;
 public final class Records {
     private final RecordController controller;
 
-    //singleton design pattern shown below this piece of code will prevent multiple instances of this class constructor from
-    //being created in the main class.
-    //This design pattern is not thread safe due to the getSingleInstance() method so will need synchronisation.
-    //--------------------------------------------
-    private static Records singleInstance = null;
-
     private Records(){
         this.controller = new RecordController();
-    } // current contructor
-
-    public synchronized static Records getSingleInstance(){
-        if(singleInstance == null){
-            singleInstance = new Records();
-        }
-        return singleInstance;
     }
-    //--------------------Intialisation-on-demand-holder-----------------------------
 
-
-    //constructor placed here.
+    //singleton design pattern shown below:
+    //
+    //    private static Records singleInstance = null;
+    //
+    //    public synchronized static Records getSingleInstance(){
+    //        if(singleInstance == null){
+    //            singleInstance = new Records();
+    //        }
+    //        return singleInstance;
+    //    }
+    // Utillised Intialisation-on-demand ---> .
 
 
     public static Records getInstance(){
@@ -35,12 +30,13 @@ public final class Records {
 
     private static class RecordHolder{private static final Records INSTANCE = new Records();}
 
-    //------------------------------------------------------
 
+    //method adds an employee to the team object.
     public boolean addEmployeeToTeam(Team team, Employee employee){
         return controller.RecordEmployee(team, employee);
     }
 
+    //method returns a Team object.
     public Team getTeam(String name){
         if(this.controller.getRecordTeam().containsKey(name)){
             return this.controller.getRecordTeam().get(name);
@@ -48,6 +44,7 @@ public final class Records {
         return null;
     }
 
+    //method adds a test manager object
     public boolean addTestManager(TestManager manager){
         if(manager != null){
             manager.getManager().add(manager);
@@ -56,6 +53,7 @@ public final class Records {
         return false;
     }
 
+    // gets the test manager object from list
     public TestManager getTestManager(Employee employee, Team team){
         if(employee != null && team != null){
             return (TestManager) team.getEmployee(employee);
@@ -64,6 +62,7 @@ public final class Records {
         return null;
     }
 
+    //adds developement manager object to the managers list
     public boolean addDevManager(DevelopementManager manager){
         if(manager != null){
             manager.getManager().add(manager);
@@ -85,6 +84,7 @@ public final class Records {
         return controller.RecordTeam(team);
     }
 
+    //This method saes
     public boolean SaveRecords() {
         try (ObjectOutputStream file = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("records.dat")))){
             for(Team team : controller.getRecordTeam().values()){
