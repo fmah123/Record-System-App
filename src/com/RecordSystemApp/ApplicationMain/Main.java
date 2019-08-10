@@ -1,6 +1,9 @@
-package com.PracticeJava;
+package com.RecordSystemApp.ApplicationMain;
 
 
+import com.RecordSystemApp.BaseClass.Employee;
+import com.RecordSystemApp.Employee.*;
+import com.RecordSystemApp.Recorder.Records;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
@@ -14,9 +17,7 @@ public class Main {
         ExecutorService executorService = Executors.newFixedThreadPool(1);
 
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
+        Thread thread = new Thread(() ->  {
                 int flag;
 
                 printActions();
@@ -50,7 +51,7 @@ public class Main {
                                 RecordsToFile();
                                 break;
                             case 5:
-                                RecordsFromFile();
+                                RecordsFromDB();
                                 break;
                             case 6:
                                 getManagersList();
@@ -60,7 +61,6 @@ public class Main {
                         quit = true;
                     }
                 }
-            }
         });
 
         thread.setName("Records thread");
@@ -88,6 +88,7 @@ public class Main {
                 experience = scanner.nextLine();
             }
             Team team = records.getTeam(teamName);
+            //Line 92 to 149: The switch statement allows the right code to execute for a particular employment type.
             switch (type.toLowerCase()) {
                 case "developer":
                     employee = new Developer(name);
@@ -191,9 +192,9 @@ public class Main {
         }
     }
 
-    // Uploads records from file.
-    private static void RecordsFromFile() {
-        records.uploadRecords();
+    // Uploads records from data base.
+    private static void RecordsFromDB() {
+        records.uploadRecordsFromDB();
     }
 
 

@@ -1,4 +1,6 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 import java.io.Serializable;
 import java.util.ArrayList;

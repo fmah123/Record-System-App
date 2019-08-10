@@ -1,4 +1,4 @@
-package com.PracticeJava;
+package com.RecordSystemApp.BaseClass;
 
 import java.io.Serializable;
 

@@ -1,4 +1,6 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 import java.io.Serializable;
 
@@ -17,3 +19,4 @@ public class Manager extends Employee implements Serializable{
         return name;
     }
 }
+

@@ -1,4 +1,6 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 public class Tester extends Employee {
     private String name;

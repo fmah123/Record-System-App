@@ -1,9 +1,11 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 import java.io.Serializable;
 
 public class Developer extends Employee implements Serializable{
-    private String name;
+    String name;
 
     public Developer(String name) {
         super(name, EmployeeType.DEVELOPER);

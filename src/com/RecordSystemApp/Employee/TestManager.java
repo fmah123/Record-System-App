@@ -1,14 +1,14 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 
-public final class TestManager extends Employee implements Management, Serializable {
+public class TestManager extends Employee implements Management, Serializable {
 
-    private static List<TestManager> manager;
+    private List<TestManager> manager;
     private int experience;
 
     //Constructor sets the manager field variable with a new linked list or passes a existing linked list

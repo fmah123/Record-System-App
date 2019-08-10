@@ -1,13 +1,14 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Employee;
+
+import com.RecordSystemApp.BaseClass.Employee;
 
 import java.io.Serializable;
 import java.util.*;
 
 public final class DevelopementManager extends Employee implements Management, Serializable {
 
-    //private static int count = 0;
     private final int experience;
-    private static List<DevelopementManager> manager;
+    private List<DevelopementManager> manager;
 
 
     public DevelopementManager(String name, int experience) {
@@ -28,7 +29,6 @@ public final class DevelopementManager extends Employee implements Management, S
         return new DevelopementManager(name,experience);
     }
 
-    @Override
     public String ManagementExperience(int months) {
         int years = 0;
         if(months >= 0){

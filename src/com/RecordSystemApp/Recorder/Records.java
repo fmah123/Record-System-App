@@ -1,9 +1,16 @@
-package com.PracticeJava;
+package com.RecordSystemApp.Recorder;
+
+import com.RecordSystemApp.BaseClass.Employee;
+import com.RecordSystemApp.Employee.DevelopementManager;
+import com.RecordSystemApp.Employee.Team;
+import com.RecordSystemApp.Employee.TestManager;
 
 import java.io.*;
-import java.nio.channels.Channel;
 import java.util.*;
 
+/**
+ * Author Mohammed Fidaa Ul Mahboob
+ */
 public final class Records {
     private final RecordController controller;
 
@@ -11,23 +18,11 @@ public final class Records {
         this.controller = new RecordController();
     }
 
-    //singleton design pattern shown below:
-    //
-    //    private static Records singleInstance = null;
-    //
-    //    public synchronized static Records getSingleInstance(){
-    //        if(singleInstance == null){
-    //            singleInstance = new Records();
-    //        }
-    //        return singleInstance;
-    //    }
-    // Utillised Intialisation-on-demand ---> .
-
-
     public static Records getInstance(){
         return RecordHolder.INSTANCE;
     }
 
+    //Line 18
     private static class RecordHolder{private static final Records INSTANCE = new Records();}
 
 
@@ -98,7 +93,12 @@ public final class Records {
         return false;
     }
 
-    //This method uploads the employee object from file stored on disk.
+    /*
+        <!-This method is not used -!>
+        This method uploads the employee object from file stored on disk.
+    */
+
+    @Deprecated
     public void uploadRecords() {
         try (ObjectInputStream file = new ObjectInputStream(new BufferedInputStream(new FileInputStream("records.dat")))) {
             boolean eof = false;
@@ -117,6 +117,10 @@ public final class Records {
         } catch (ClassNotFoundException e) {
             System.out.println("ClassNotFoundException: " + e.getMessage());
         }
+    }
+
+    public void uploadRecordsFromDB(){
+
     }
 
     //This inner class is used to abstract methods used to implement different actions of the program.
